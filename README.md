@@ -20,6 +20,8 @@ NGINX tools to update things.
 	but I want to make them validate incoming data
 	using JSON Schema, and stuff like that. Pretty
 	simple stuff though, just a demo.
+* This should have a better readme, so that you can
+	know what to do with it, and how to set it up.
 
 ## setup
 
