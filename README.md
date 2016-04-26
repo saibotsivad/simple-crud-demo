@@ -11,30 +11,40 @@ Install:
 
 * nodejs
 * update npm
-* install these: `npm install -g reserved-numbers-cli psy`
-* on your path (e.g. `~/.profile` or `~/.bashrc` or whatever) set
-	the environment variable `NGINX_SITES_ENABLED_FOLDER` to wherever
-	your folder is, probably like `/usr/local/etc/nginx/sites-enabled`
 * make a folder where you'll run things, like `/var/www/simplecrud.dev`
 * clone the repo twice, like this:
 
 	git clone https://github.com/tobiaslabs/simple-crud-demo.git fermion
 	git clone https://github.com/tobiaslabs/simple-crud-demo.git boson
 
-inside each repo, run the setup script `./setup.sh SPIN` e.g.
+inside each repo, run the `setup.js` command, e.g.
 
 	cd fermion
-	./setup.sh fermion
+	node setup.js simplecrud.dev fermion /etc/nginx/sites-enabled
 	cd ../boson
-	./setup.sh boson
+	node setup.js simplecrud.dev boson /etc/nginx/sites-enabled
 
-## deploy
+## test it all
 
-Run the command `npm run deploy`
+Check out the scripts in [packages.json](packages.json), but it's like this:
 
-It runs tests, starts the API, tests that the API is
-working, and updates and reloads the NGINX conf file.
+* `npm run test` : Run the module JS tests
+* `npm run start` : Restart the server using [psy](https://www.npmjs.com/package/psy)
+* `npm run validate` : Run some basic HTTP requests to make sure server is running
+* `npm run deploy` : Generate and copy out the nginx config file and reload nginx
+* `npm run rollback` : Rollback the nginx conf file to it's previous version
 
-## rollback
+## normal use
 
-If the deployed API 
+You would use `git fetch` to grab the latest, then run
+
+	npm run bump
+
+This runs all the things, leaving you with production running whatever
+is in this folder.
+
+## license
+
+All content published and released under the [Very Open License](http://veryopenlicense.com/).
+
+<3

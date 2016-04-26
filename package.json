@@ -1,6 +1,6 @@
 {
   "name": "simple-crud-demo",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "A simple CRUD app, used as a demo for some NGINX tools.",
   "main": "index.js",
   "scripts": {
@@ -34,6 +34,7 @@
     "mustache": "^2.2.1",
     "psy": "^1.7.2",
     "request": "^2.72.0",
+    "reserved-numbers-cli": "^0.2.0",
     "tape": "^4.5.1"
   }
 }
