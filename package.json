@@ -6,11 +6,9 @@
   "scripts": {
     "clean": "npm prune --production",
     "test": "tape test/test-*.js",
+    "build": "echo \"no build for this site\"",
     "start": "./start.sh",
-    "validate": "tape validate/test-*.js",
-    "deploy": "./deploy.sh",
-    "bump": "npm run clean && npm run test && npm run start && npm run validate && npm run deploy",
-    "rollback": "./rollback.sh"
+    "isup": "tape validate/test-*.js"
   },
   "repository": {
     "type": "git",
