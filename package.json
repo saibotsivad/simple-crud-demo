@@ -12,6 +12,7 @@
   },
   "config": {
     "domain": "simplecrud.tobiaslabs.com",
+    "quantityOfPorts": 1,
     "ports": "[4000]"
   },
   "repository": {
