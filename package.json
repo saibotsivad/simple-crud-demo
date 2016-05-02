@@ -11,8 +11,8 @@
     "isup": "tape validate/test-*.js"
   },
   "config": {
-    "domain": "simple-crud-demo.dev",
-    "ports": "[8080]"
+    "domain": "simplecrud.tobiaslabs.com",
+    "ports": "[4000]"
   },
   "repository": {
     "type": "git",
