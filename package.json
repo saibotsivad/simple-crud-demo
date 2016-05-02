@@ -8,7 +8,7 @@
     "test": "tape test/test-*.js",
     "build": "echo \"no build for this site\"",
     "start": "node index.js --ports=$npm_package_config_ports --domain=$npm_package_config_domain",
-    "isup": "tape validate/test-*.js"
+    "isup": "tape validate/test-*.js --ports=$npm_package_config_ports"
   },
   "config": {
     "domain": "simplecrud.tobiaslabs.com",

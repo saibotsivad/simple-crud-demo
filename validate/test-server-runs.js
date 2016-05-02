@@ -1,8 +1,9 @@
 const request = require('request')
 const test = require('tape')
 
-const config = require('../.config.json')
-const port = require('../libs/reserved-numbers.js').get(config.domain, config.spin)[0]
+const argv = require('minimist')(process.argv.slice(2))
+const port = JSON.parse(argv.ports)[0]
+
 const domain = 'localhost'
 
 test('that the server is running at all', t => {
