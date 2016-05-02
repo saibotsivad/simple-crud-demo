@@ -1,7 +1,7 @@
-const ports = require('./libs/reserved-numbers.js')
 const paths = require('./libs/api-paths.js')
-const config = require('./.config.json')
-const port = ports.get(config.domain, config.spin)[0]
+const argv = require('minimist')(process.argv.slice(2))
+
+const port = JSON.parse(argv.ports)[0]
 
 const express = require('express')
 
@@ -14,10 +14,6 @@ paths.forEach(api => {
 	app[api.request](api.path, api.control)
 })
 
-console.log(`starting the server:
-	domain: ${config.domain}
-	spin: ${config.spin}
-	port: ${port}
-`)
+console.log(`starting the server on port ${port}`)
 
 app.listen(port)

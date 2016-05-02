@@ -7,8 +7,12 @@
     "clean": "npm prune --production",
     "test": "tape test/test-*.js",
     "build": "echo \"no build for this site\"",
-    "start": "./start.sh",
+    "start": "node index.js --ports=$npm_package_config_ports --domain=$npm_package_config_domain",
     "isup": "tape validate/test-*.js"
+  },
+  "config": {
+    "domain": "simple-crud-demo.dev",
+    "ports": "[8080]"
   },
   "repository": {
     "type": "git",
