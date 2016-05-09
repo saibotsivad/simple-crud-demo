@@ -9,13 +9,14 @@
     "build": "echo \"no build for this site\"",
     "start": "node index.js --ports=$npm_package_config_ports",
     "isup": "tape validate/test-*.js --ports=$npm_package_config_ports",
-    "nginx": "minimist-json --json=ports -- --ports=$npm_package_config_ports --domain=$npm_package_config_domain | mustache - nginx.conf.mustache > nginx.conf"
+    "nginx": "minimist-json --json=ports -- --ports=$npm_package_config_ports --domain=$npm_package_config_domain --listen=$npm_package_config_listen | mustache - nginx.conf.mustache > nginx.conf"
   },
   "config": {
     "domain": "simplecrud.tobiaslabs.com",
     "nginxConfFile": "nginx.conf",
     "quantityOfPorts": 1,
-    "ports": "[8080]"
+    "ports": "[8081]",
+    "listen": "8080"
   },
   "repository": {
     "type": "git",
