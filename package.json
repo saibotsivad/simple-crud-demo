@@ -7,11 +7,13 @@
     "clean": "npm prune --production",
     "test": "tape test/test-*.js",
     "build": "echo \"no build for this site\"",
-    "start": "node index.js --ports=$npm_package_config_ports --domain=$npm_package_config_domain",
-    "isup": "tape validate/test-*.js --ports=$npm_package_config_ports"
+    "start": "node index.js --ports=$npm_package_config_ports",
+    "isup": "tape validate/test-*.js --ports=$npm_package_config_ports",
+    "nginx": "minimist-json --json=ports -- --ports=$npm_package_config_ports --domain=$npm_package_config_domain | mustache - nginx.conf.mustache > nginx.conf"
   },
   "config": {
     "domain": "simplecrud.tobiaslabs.com",
+    "nginxConfFile": "nginx.conf",
     "quantityOfPorts": 1,
     "ports": "[4000]"
   },
@@ -34,6 +36,7 @@
   "dependencies": {
     "express": "^4.13.4",
     "minimist": "^1.2.0",
+    "minimist-json": "^2.0.0",
     "mustache": "^2.2.1",
     "psy": "^1.7.2",
     "request": "^2.72.0",
