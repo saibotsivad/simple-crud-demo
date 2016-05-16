@@ -5,7 +5,16 @@ const path = {
 	service: /\/service\/(\w+)$/
 }
 
+const fs = require('fs')
+const landing = fs.readFileSync('./landing.html', { encoding: 'utf8' })
+
 module.exports = [{
+	request: 'get',
+	path: '/',
+	control: function getMainLandingPage(req, res) {
+		res.send(landing)
+	}
+},{
 	request: 'get',
 	path: path.userList,
 	control: function getListOfUserObjects(req, res) {
