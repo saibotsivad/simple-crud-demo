@@ -9,7 +9,7 @@ const domain = 'localhost'
 test('that the server is running at all', t => {
 	t.plan(1)
 	request(`http://${domain}:${port}/`, (err, response) => {
-		t.equal(response.statusCode, 404, 'unsupported endpoint')
+		t.equal(response.statusCode, 200, 'landing page')
 		t.end()
 	})
 })
