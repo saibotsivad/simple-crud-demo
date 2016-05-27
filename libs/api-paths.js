@@ -1,8 +1,8 @@
 const path = {
 	userList: /\/user$/,
-	user: /\/user\/(\w+)$/,
-	serviceList: /\/service$/,
-	service: /\/service\/(\w+)$/
+	user: /\/user\/(\w+)$/
+	// serviceList: /\/service$/,
+	// service: /\/service\/(\w+)$/
 }
 
 const fs = require('fs')
@@ -52,42 +52,44 @@ module.exports = [{
 		// TODO requires auth
 		res.send(`deleting _user_ object for ${username}`)
 	}
-},{
-	request: 'put',
-	path: path.serviceList,
-	requiresAuth: true,
-	control: function createServiceObject(req, res) {
-		res.send(`create _service_ object and return uuid`)
-	}
-},{
-	request: 'get',
-	path: path.serviceList,
-	requiresAuth: true,
-	control: function getListOfServiceObjects(req, res) {
-		res.send(`get list of _service_ objects`)
-	}
-},{
-	request: 'get',
-	path: path.service,
-	requiresAuth: true,
-	control: function getServiceObject(req, res) {
-		const uuid = req.params[0]
-		res.send(`get _service_ object ${uuid}`)
-	}
-},{
-	request: 'post',
-	path: path.service,
-	requiresAuth: true,
-	control: function updateServiceObject(req, res) {
-		const uuid = req.params[0]
-		res.send(`update _service_ object ${uuid}`)
-	}
-},{
-	request: 'delete',
-	path: path.service,
-	requiresAuth: true,
-	control: function deleteServiceObject(req, res) {
-		const uuid = req.params[0]
-		res.send(`delete _service_ object ${uuid}`)
-	}
-}]
+}
+// ,{
+// 	request: 'put',
+// 	path: path.serviceList,
+// 	requiresAuth: true,
+// 	control: function createServiceObject(req, res) {
+// 		res.send(`create _service_ object and return uuid`)
+// 	}
+// },{
+// 	request: 'get',
+// 	path: path.serviceList,
+// 	requiresAuth: true,
+// 	control: function getListOfServiceObjects(req, res) {
+// 		res.send(`get list of _service_ objects`)
+// 	}
+// },{
+// 	request: 'get',
+// 	path: path.service,
+// 	requiresAuth: true,
+// 	control: function getServiceObject(req, res) {
+// 		const uuid = req.params[0]
+// 		res.send(`get _service_ object ${uuid}`)
+// 	}
+// },{
+// 	request: 'post',
+// 	path: path.service,
+// 	requiresAuth: true,
+// 	control: function updateServiceObject(req, res) {
+// 		const uuid = req.params[0]
+// 		res.send(`update _service_ object ${uuid}`)
+// 	}
+// },{
+// 	request: 'delete',
+// 	path: path.service,
+// 	requiresAuth: true,
+// 	control: function deleteServiceObject(req, res) {
+// 		const uuid = req.params[0]
+// 		res.send(`delete _service_ object ${uuid}`)
+// 	}
+// }
+]
