@@ -1,7 +1,6 @@
 const paths = require('./libs/api-paths.js')
 const argv = require('minimist')(process.argv.slice(2))
-
-const port = JSON.parse(argv.ports)[0]
+const port = parseInt(argv.port, 10)
 
 const express = require('express')
 

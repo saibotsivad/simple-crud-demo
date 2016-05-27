@@ -7,8 +7,8 @@
     "clean": "npm prune --production",
     "test": "tape test/test-*.js",
     "build": "echo \"no build for this site\"",
-    "start": "node index.js --ports=$PORT",
-    "isup": "tape validate/test-*.js --ports=$1"
+    "start": "node index.js --port=$PORT",
+    "isup": "tape validate/test-*.js --port=$PORT"
   },
   "config": {
     "domain": "simplecrud.tobiaslabs.com",

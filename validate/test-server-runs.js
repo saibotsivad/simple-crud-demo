@@ -2,7 +2,7 @@ const request = require('request')
 const test = require('tape')
 
 const argv = require('minimist')(process.argv.slice(2))
-const port = JSON.parse(argv.ports)[0]
+const port = parseInt(argv.port, 10)
 
 const domain = 'localhost'
 
