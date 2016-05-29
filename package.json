@@ -6,7 +6,6 @@
   "scripts": {
     "clean": "npm prune --production",
     "test": "tape test/test-*.js",
-    "build": "echo \"no build for this site\"",
     "start": "node index.js --port=$PORT",
     "isup": "tape validate/test-*.js --port=$PORT"
   },
