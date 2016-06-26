@@ -7,16 +7,13 @@
     "clean": "npm prune --production",
     "test": "tape test/test-*.js",
     "build": "echo \"no build for this site\"",
-    "start": "node index.js --port=$PORT",
+    "start": "node server/index.js --port=$PORT --config=$CONFIG",
     "nginx": "minimist-json -- --domain=$DOMAIN --port=$PORT | mustache - nginx.conf > .nginx-built.conf",
-    "isup": "sleep 2 && tape validate/test-*.js --port=$PORT"
-  },
-  "config": {
-    "domain": "simplecrud.tobiaslabs.com",
-    "nginxConfFile": "nginx.conf",
-    "quantityOfPorts": 1,
-    "ports": "[8081]",
-    "listen": "8080"
+    "isup": "sleep 2 && tape validate/test-*.js --port=$PORT",
+    "preservertest": "psy start -n simple-crud-demo -- node server/index.js --port=8081 --config=./example-config.json",
+    "servertest": "tape validate/test-*.js --port=8081 --config=./example-config.json",
+    "postservertest": "psy stop simple-crud-demo && psy rm simple-crud-demo",
+    "develop": "node server/index.js --port=8081 --config=./example-config.json"
   },
   "repository": {
     "type": "git",
@@ -35,13 +32,20 @@
   },
   "homepage": "https://github.com/tobiaslabs/simple-crud-demo#readme",
   "dependencies": {
+    "basic-auth": "^1.0.3",
+    "body-parser": "^1.15.0",
+    "camelize": "^1.0.0",
     "express": "^4.13.4",
+    "glob": "^7.0.3",
+    "is-my-json-valid": "^2.13.1",
     "minimist": "^1.2.0",
     "minimist-json": "^2.0.0",
     "mustache": "^2.2.1",
+    "mysql": "^2.11.0",
     "psy": "^1.7.2",
     "request": "^2.72.0",
     "reserved-numbers-cli": "^0.2.0",
+    "sql-concat": "^1.2.0",
     "tape": "^4.5.1"
   }
 }

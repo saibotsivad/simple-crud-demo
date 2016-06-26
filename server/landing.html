@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Simple Crud Demo</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-offset-1 col-md-10 col-lg-offset-3 col-lg-6">
+					<h1>Simple Crud Demo</h1>
+					<p>This is a site+api for demoing a deployment tool which uses npm and nginx.</p>
+					<p>After you make changes and commit them, you can run a command which starts up another application instance and switches your server to use that one. With the magic of nginx, the result is a zero-downtime service.</p>
+					<p>Check out the <a href="https://github.com/tobiaslabs/simple-crud-demo">Github repo</a> for more details.</p>
+					<hr>
+
+					<h2>API</h2>
+					<p>Here are the available API endpoints:</p>
+
+					<h3>Users</h3>
+					<p>List, create, and update users.</p>
+
+					<h4><code>GET /user</code></h4>
+					<h5>Get the list of users.</h5>
+					<p>Parameters:</p>
+					<ul>
+						<li>
+							<code>pageSize</code>
+							<em>(integer, optional)</em>
+							Number of results per page.
+						</li>
+						<li>
+							<code>page</code>
+							<em>(integer, optional)</em>
+							The page number.
+						</li>
+						<li>
+							<code>filter</code>
+							<em>(string, optional)</em>
+							Regex used to filter on username.
+						</li>
+					</ul>
+
+					<h4><code>GET /user/${username}</code></h4>
+					<h5>Get information about a single user.</h5>
+					<p>No parameters.</p>
+
+					<h4><code>PUT /user/${username}</code></h4>
+					<h5>Create user for this username.</h5>
+					<p>If the user does not exist, it will be created.</p>
+					<p>Content type: <code>application/json</code></p>
+					<p>Properties:</p>
+					<ul>
+						<li>
+							<code>token</code>
+							<em>(string, required)</em>
+							Like a password. Required to update user on later HTTP requests.
+						</li>
+						<li>
+							<code>email</code>
+							<em>(string, required)</em>
+							Email address used to contact user about technical issues.
+						</li>
+					</ul>
+
+					<h4><code>POST /user/${username}</code></h4>
+					<h5>Update information about this user.</h5>
+					<p>Content type: <code>application/json</code></p>
+					<p>Properties:</p>
+					<ul>
+						<li>
+							<code>token</code>
+							<em>(string, required)</em>
+							The token used when originally generating the user.
+						</li>
+					</ul>
+
+					<hr>
+
+					<p>Made with ♥ by <a href="http://tobiaslabs.com/">Tobias Labs</a></p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

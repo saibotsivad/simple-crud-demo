@@ -1,0 +1,27 @@
+const fs = require('fs')
+const path = require('path')
+const express = require('express')
+const bodyParser = require('body-parser')
+
+const argv = require('minimist')(process.argv.slice(2))
+const port = parseInt(argv.port, 10)
+
+const configs = require(argv.configPath)
+
+const database = require('common/db')(configs)
+
+const paths = require('common/api')
+
+const app = express()
+app.use(bodyParser.json())
+
+console.log('registering all paths...')
+
+paths({ database }).forEach(api => {
+	app[api.request](api.path, api.control)
+	console.log(`  ${api.request.toUpperCase()} ${api.path}`)
+})
+
+console.log(`starting the server on port ${port}`)
+
+app.listen(port)
