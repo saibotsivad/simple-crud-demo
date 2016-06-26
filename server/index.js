@@ -5,10 +5,9 @@ const bodyParser = require('body-parser')
 
 const argv = require('minimist')(process.argv.slice(2))
 const port = parseInt(argv.port, 10)
+const config = require(argv.config)
 
-const configs = require(argv.configPath)
-
-const database = require('common/db')(configs)
+const database = require('common/db')(config)
 
 const paths = require('common/api')
 
