@@ -4,16 +4,18 @@
   "description": "A simple CRUD app, used as a demo for some NGINX tools.",
   "main": "index.js",
   "scripts": {
-    "clean": "npm prune --production",
+    "clean": "npm prune --production; rm -rf build",
     "test": "tape test/test-*.js",
-    "build": "echo \"no build for this site\"",
+    "test:swagger": "swagger-tools validate ./server/api/v1.yaml",
+    "build": "mkdir build; npm-run-all build:*",
+    "build:swagger": "node build-swagger.js",
     "start": "node server/index.js --port=$PORT --config=$CONFIG",
     "nginx": "minimist-json -- --domain=$DOMAIN --port=$PORT | mustache - nginx.conf > .nginx-built.conf",
     "isup": "sleep 2 && tape validate/test-*.js --port=$PORT",
     "preservertest": "psy start -n simple-crud-demo -- node server/index.js --port=8081 --config=./example-config.json",
     "servertest": "tape validate/test-*.js --port=8081 --config=./example-config.json",
     "postservertest": "psy stop simple-crud-demo && psy rm simple-crud-demo",
-    "develop": "node server/index.js --port=8081 --config=./example-config.json"
+    "develop": "node server/index.js --port=8081 --config=../example-config.json"
   },
   "repository": {
     "type": "git",
@@ -36,16 +38,20 @@
     "body-parser": "^1.15.0",
     "camelize": "^1.0.0",
     "express": "^4.13.4",
-    "glob": "^7.0.3",
+    "glob": "^7.0.5",
     "is-my-json-valid": "^2.13.1",
     "minimist": "^1.2.0",
     "minimist-json": "^2.0.0",
     "mustache": "^2.2.1",
     "mysql": "^2.11.0",
+    "npm-run-all": "^2.3.0",
     "psy": "^1.7.2",
     "request": "^2.72.0",
     "reserved-numbers-cli": "^0.2.0",
+    "shell-tag": "^1.0.1",
     "sql-concat": "^1.2.0",
+    "swagger-tools": "^0.10.1",
+    "swagger-ui": "^2.1.4",
     "tape": "^4.5.1"
   }
 }

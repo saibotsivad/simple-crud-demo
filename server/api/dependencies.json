@@ -1,0 +1,17 @@
+{
+	"js": [
+		"node_modules/swagger-ui/dist/swagger-ui.min.js"
+	],
+	"css": [
+		"node_modules/swagger-ui/dist/css/*.css",
+		"server/api/style.css"
+	],
+	"other": [
+		"node_modules/swagger-ui/dist/fonts/*.ttf",
+		"node_modules/swagger-ui/dist/images/*.gif",
+		"node_modules/swagger-ui/dist/images/*.png",
+		"node_modules/swagger-ui/dist/images/*.ico",
+		"node_modules/swagger-ui/dist/lib/*.js",
+		"server/api/v1.yaml"
+	]
+}

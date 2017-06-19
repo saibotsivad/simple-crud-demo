@@ -1,0 +1,20 @@
+/* these are just overrides of the default swagger styles */
+
+/* Google Font's Droid Sans */
+@font-face {
+	font-family: 'Droid Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Droid Sans'), local('DroidSans'), url('DroidSans.ttf') format('truetype');
+}
+/* Google Font's Droid Sans Bold */
+@font-face {
+	font-family: 'Droid Sans';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Droid Sans Bold'), local('DroidSans-Bold'), url('DroidSans-Bold.ttf') format('truetype');
+}
+
+.swagger-section #header #logo {
+	background: transparent url(logo_small.png) no-repeat left center;
+}

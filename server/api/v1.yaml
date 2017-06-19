@@ -1,0 +1,180 @@
+# this is a demo of an API spec written for swagger.io
+swagger: '2.0'
+info:
+  title: Simple CRUD Demo App
+  description: A simple demo app to demonstrate some good technology uses.
+  version: "1.0.0"
+# the domain of the service
+host: simplecrud.tobiaslabs.com
+# array of all schemes that your API supports
+schemes:
+  - https
+  - http
+# will be prefixed to all paths
+basePath: /api/v1
+produces:
+  - application/json
+paths:
+  /user:
+    get:
+      summary: List of Users
+      description: |
+        The Users endpoint returns information about the users for this
+        site. The response includes the username and other details about
+        them.
+      tags:
+        - Users
+      parameters:
+        - name: username
+          in: query
+          description: Simple query for username. Uses regex like *%s*
+          required: false
+          type: string
+        - name: pagesize
+          in: query
+          description: Maximum results per query (defaults to 50).
+          required: false
+          type: number
+        - name: page
+          in: query
+          description: The zero-indexed page number. For use with pagesize.
+          required: false
+          type: number
+      responses:
+        200:
+          description: An array of users
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/{username}:
+    get:
+      summary: Individual User
+      description: |
+        Get information about the user for this username. If the request is
+        authenticated, the response may include additional information.
+      parameters:
+        - name: username
+          in: path
+          description: Username of user.
+          required: true
+          type: string
+      tags:
+        - Users
+      responses:
+        200:
+          description: A single User object
+          schema:
+            $ref: '#/definitions/User'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /message:
+    post:
+      summary: Create New Message
+      description: |
+        This endpoint is used to create new messages. The user must
+        be authenticated when creating a message.
+      tags:
+        - Messages
+      parameters:
+        - name: username
+          in: body
+          description: The username of the User creating the message.
+          required: true
+          schema:
+            $ref: '#/definitions/Message'
+      responses:
+        200:
+          description: The UUID of the newly created Message.
+          schema:
+            $ref: '#/definitions/Message'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /message/{username}:
+    get:
+      summary: List of Messages for a User
+      description: |
+        This endpoint returns messages published by the user. The response
+        is a list of messages. If the request is authenticated, the message
+        list may contain additional messages.
+      tags:
+        - Messages
+      parameters:
+        - name: username
+          in: path
+          description: Username of user.
+          required: true
+          type: string
+        - name: query
+          in: query
+          description: Simple query of message content. Uses regex like *%s*
+          required: false
+          type: string
+        - name: pagesize
+          in: query
+          description: Maximum results per query (defaults to 50).
+          required: false
+          type: number
+        - name: page
+          in: query
+          description: The zero-indexed page number. For use with pagesize.
+          required: false
+          type: number
+      responses:
+        200:
+          description: An array of messages
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  User:
+    type: object
+    properties:
+      username:
+        type: string
+        description: Unique identifier for the user.
+      about:
+        type: string
+        description: Short bio. Visible publically.
+      email:
+        type: string
+        description: Email address of the user. Not publically visible.
+      favoriteColor:
+        type: string
+        description: Favorite color. Not publically visible.
+      favoriteNumber:
+        type: integer
+        format: int32
+        description: Favorite number. Visible publically.
+  Message:
+    type: object
+    properties:
+      content:
+        type: string
+        description: The message content, interpreted as markdown.
+      public:
+        type: boolean
+        description: Whether the message is public.
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string

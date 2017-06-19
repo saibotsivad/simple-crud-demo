@@ -14,6 +14,10 @@ const paths = require('common/api')
 const app = express()
 app.use(bodyParser.json())
 
+const static = path.join(__dirname, '../build')
+console.log(`serving static files from ${static}`)
+app.use(express.static(static))
+
 console.log('registering all paths...')
 
 paths({ database }).forEach(api => {
