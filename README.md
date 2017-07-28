@@ -1,5 +1,7 @@
 # simple-crud-demo
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/saibotsivad/simple-crud-demo.svg)](https://greenkeeper.io/)
+
 A simple CRUD app, used as a demo for some NGINX tools.
 
 You install some stuff on your server, and then run the
